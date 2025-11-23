@@ -1,292 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="VCU-Bridge: Hierarchical Visual Connotation Understanding via Semantic Bridging">
+  <meta name="keywords"
+    content="VCU-Bridge, MLLM, Multimodal Large Language Model, Visual Connotation, Hierarchical Understanding">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
+  <title>VCU-Bridge: Hierarchical Visual Connotation Understanding via Semantic Bridging</title>
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="icon" href="./static/images/favicon.ico">
 
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
+
 <body>
 
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-  </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      </div>
 
-  <main id="main-content">
+    </div>
+  </nav>
+
+
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-2 publication-title" style="max-width: 100%; margin: 0 auto; font-size: 2.5rem;">VCU-Bridge: Hierarchical Visual<br>Connotation Understanding via Semantic Bridging</h1>
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+                <a href="https://github.com/ZI-MA/VCU-Bridge">Ming Zhong</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=sOC_TooAAAAJ">Yuanlei Wang</a><sup>3*</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/ZI-MA/VCU-Bridge">Liuzhou Zhang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=R5iSLPQAAAAJ">Arctanx An</a><sup>2♠</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=YlL3xN4AAAAJ">Renrui Zhang</a><sup>4</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=HgapY3sAAAAJ">Hao Liang</a><sup>2</sup>,
+              </span>
+              <br>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=3vArSU0AAAAJ">Ming Lu</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.semanticscholar.org/author/Ying-Shen/143822679">Ying Shen</a><sup>3†</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=JE4VON0AAAAJ">Wentao Zhang</a><sup>2†</sup>
+              </span>
+            </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Zhejiang University,</span>
+              <span class="author-block"><sup>2</sup>Peking University,</span>
+              <span class="author-block"><sup>3</sup>Sun Yat-sen University,</span>
+              <span class="author-block"><sup>4</sup>CUHK</span>
+              <br>
+              <span class="author-block"><sup>*</sup>Equal Contribution,</span>
+              <span class="author-block"><sup>♠</sup>Project Leader,</span>
+              <span class="author-block"><sup>†</sup>Corresponding Authors</span>
+            </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
+            <!-- <div class="column has-text-centered">
+              <img src="./static/images/zju.png" class="center-image" alt="zju" />
+            </div> -->
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/TODO" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
                     </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/ZI-MA/VCU-Bridge"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -294,227 +116,1486 @@
                     <span>Code</span>
                   </a>
                 </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
+                <!-- Dataset Link. -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+                  <a href="https://huggingface.co/datasets/Chime316/HVCU-Bench"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
+  <section class="section">
     <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
+      <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-2">Abstract</h2>
+          <div class="content has-text-justified is-size-5">
+            <p>
+              While Multimodal Large Language Models (MLLMs) excel on benchmarks, their processing paradigm differs from
+              the human ability to integrate visual information. Unlike humans who naturally bridge details and
+              high-level concepts, models tend to treat these elements in isolation. Prevailing evaluation protocols
+              often decouple low-level perception from high-level reasoning, overlooking their semantic and causal
+              dependencies, which yields non-diagnostic results and obscures performance bottlenecks. We present
+              <em><strong>VCU-Bridge</strong></em>, a framework that operationalizes a human-like hierarchy of visual connotation
+              understanding: multi-level reasoning that advances from foundational perception through semantic bridging
+              to abstract connotation, with an explicit evidence-to-inference trace from concrete cues to abstract
+              conclusions. Building on this framework, we construct <em><strong>HVCU-Bench</strong></em>, a benchmark for
+              hierarchical visual connotation understanding with explicit, level-wise diagnostics. Comprehensive
+              experiments demonstrate a consistent decline in performance as reasoning progresses to higher levels. We
+              further develop a data generation pipeline for instruction tuning guided by Monte Carlo Tree Search (MCTS)
+              and show that strengthening low-level capabilities yields measurable gains at higher levels.
+              Interestingly, it not only improves on HVCU-Bench but also brings benefits on general benchmarks (average
+              +2.53%), especially with substantial gains on MMStar (+7.26%), demonstrating the significance of the
+              hierarchical thinking pattern and its effectiveness in enhancing MLLM capabilities.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End youtube video -->
+  </section>
 
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
+  <!-- Motivation and VCU-Bridge Framework -->
+  <section class="section hero is-light">
     <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
+      <!-- Motivation/Teaser -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div style="margin-bottom: 3rem;">
+            <div style="max-width: 90%; margin: 0 auto;">
+              <img src="./static/images/moti.jpg" class="center-image" alt="Teaser Image" style="width: 100%; border: none; outline: none;" />
+              <div class="figure-caption" style="margin-top: 1rem;" lang="en">
+                <p class="is-size-5" style="margin: 0;"><strong>Showcase of different pattern between human and model.</strong> Models can appear capable by correctly answering both concrete and abstract questions while fundamentally failing at the reasoning that bridges them. Current evaluation may miss critical reasoning failures when models produce correct answers at both concrete and abstract levels.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
 
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+      <!-- VCU-Bridge Framework -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-2">VCU-Bridge Framework</h2>
+          <div class="content has-text-justified is-size-5">
+            <p>
+              Motivated by the observation above, we formalize <strong>VCU-Bridge</strong> as the structured inference of abstract scene interpretations grounded in perceptual evidence, 
+              with each intermediate semantic justification made explicit and auditable. VCU-Bridge is represented as a structured triple of statements 
+              ordered by their level of abstraction: <strong>Foundational Perceptual Level (<em>L<sub>perc</sub></em>)</strong> → 
+              <strong>Semantic Bridge Level (<em>L<sub>bridge</sub></em>)</strong> → <strong>Abstract Connotative Level (<em>L<sub>conn</sub></em>)</strong>.
+            </p>
+            <div class="columns is-multiline" style="margin-top: 2rem;">
+              <div class="column is-4">
+                <div class="box" style="height: 100%; padding: 1.5rem;">
+                  <h4 class="title is-4 has-text-primary">🔍 Foundational Perceptual Level</h4>
+                  <p style="font-size: 0.95em; line-height: 1.6;">
+                    <strong><em>L<sub>perc</sub></em></strong> involves identifying low-level, objective visual primitives like objects and their attributes 
+                    that are directly observable in the image.
+                  </p>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="box" style="height: 100%; padding: 1.5rem;">
+                  <h4 class="title is-4 has-text-primary">🌉 Semantic Bridge Level</h4>
+                  <p style="font-size: 0.95em; line-height: 1.6;">
+                    <strong><em>L<sub>bridge</sub></em></strong> provides explanatory statements that causally link perceptual evidence to higher-level meaning, 
+                    establishing the critical connection between concrete details and abstract interpretations.
+                  </p>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="box" style="height: 100%; padding: 1.5rem;">
+                  <h4 class="title is-4 has-text-primary">💭 Abstract Connotative Level</h4>
+                  <p style="font-size: 0.95em; line-height: 1.6;">
+                    <strong><em>L<sub>conn</sub></em></strong> captures subjective, high-level interpretations of the scene such as aesthetics, emotion, 
+                    or symbolic meaning inferred from the visual content.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem;">
+              A valid hierarchy must satisfy pairwise support constraints, where each higher-level statement is sufficiently justified by the lower-level one. 
+              This formulation enables explicit modeling of the associative reasoning that connects concrete perceptual evidence to abstract connotative meaning.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-<!--End paper poster -->
 
+  <!-- HVCU-Bench Overview -->
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-2">HVCU-Bench: A Benchmark for VCU-Bridge</h2>
+          <div class="content has-text-justified is-size-5">
+            <p>
+              To systematically evaluate VCU-Bridge capabilities, we construct <strong>HVCU-Bench</strong>, a benchmark specifically designed 
+              to measure hierarchical visual reasoning ability. Unlike traditional benchmarks that test perception and reasoning in isolation, 
+              HVCU-Bench explicitly models the critical semantic bridge that connects low-level visual details to high-level abstract interpretations.
+            </p>
+            <div class="figure-caption" style="margin-top: 2rem;" lang="en">
+              <img src="./static/images/Bench.jpg" alt="Overview of HVCU-Bench" width="100%" style="border: none; outline: none;" />
+              <p class="is-size-5" style="margin-top: 1rem; margin-bottom: 0;"><strong>Overview of HVCU-Bench.</strong> We evaluate MLLMs across 3 task families spanning 15 diverse aspects (top left). Our benchmark employs hierarchical decomposition: each question is systematically broken down into sub-questions across three levels (Perception, Bridge, Connotation), with validation ensuring logical coherence. During evaluation, models progress from low to high levels, constructing inter-level reasoning chains that emulate human visual comprehension (bottom). While GPT-4o achieves top performance among MLLMs, it falls substantially short of human capability, exposing a significant gap (top right).</p>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+              <h3 class="title is-4">Task Design</h3>
+              <p>
+                HVCU-Bench comprises three task families covering fifteen fine-grained aspects:
+              </p>
+              <ul>
+                <li><strong>Affective Reasoning</strong> (joy, affection, wonder, anger, fear, sadness)</li>
+                <li><strong>Aesthetic Appreciation</strong> (color, composition, font, graphics)</li>
+                <li><strong>Implication Understanding</strong> (metaphor, symbolism, contrast, exaggeration, dislocation)</li>
+              </ul>
+              <p>
+                All items follow a hierarchical multiple-choice QA format with four options per question.
+              </p>
+            </div>
 
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+            <div style="margin-top: 2rem;">
+              <h3 class="title is-4">Evaluation Metrics</h3>
+              <p>
+                We evaluate model performance using metrics that capture both level-specific correctness and full-chain consistency:
+              </p>
+              <ul>
+                <li><strong>Per-Level Accuracy (<em>Acc<sub>perc</sub></em>, <em>Acc<sub>bridge</sub></em>, <em>Acc<sub>conn</sub></em>):</strong> 
+                  The proportion of correct predictions at each individual level, providing insight into capability at different abstraction levels.</li>
+                <li><strong>Full-Chain Accuracy (<em>Acc<sub>full</sub></em>):</strong> Requires simultaneous correctness across all three levels, 
+                  evaluating the model's ability to perform hierarchical reasoning from perception to connotation.</li>
+                <li><strong>Overall Score (<em>Score</em>):</strong> The mean of <em>Acc<sub>full</sub></em> scores across all tasks, enabling fair model comparison.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  <!-- Section 6: Experimental Results -->
+  <section class="section hero is-light">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-2">Experimental Results</h2>
+          
+          <h3 class="title is-3 has-text-left" style="margin-top: 2rem;">Overall Performance</h3>
+          <div class="content has-text-centered is-size-5">
+            <div class="table-container">
+              <table class="table is-striped is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th rowspan="2" style="vertical-align: middle; min-width: 200px;"><strong>Model</strong></th>
+                    <th rowspan="2" style="vertical-align: middle;"><strong>Model Size</strong></th>
+                    <th colspan="4"><strong>Implication Understanding</strong></th>
+                    <th colspan="4"><strong>Aesthetic Appreciation</strong></th>
+                    <th colspan="4"><strong>Affective Reasoning</strong></th>
+                    <th rowspan="2" style="vertical-align: middle;"><em><strong>Score</strong></em></th>
+                  </tr>
+                  <tr>
+                    <th><strong><em>Acc<sub>perc</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>bridge</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>conn</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>full</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>perc</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>bridge</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>conn</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>full</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>perc</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>bridge</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>conn</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>full</sub></em></strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="is-selected-row">
+                    <td colspan="15"><strong>Basic Reference</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Human</td>
+                    <td>-</td>
+                    <td>99.25</td>
+                    <td>96.00</td>
+                    <td>86.50</td>
+                    <td>86.00</td>
+                    <td>99.14</td>
+                    <td>92.29</td>
+                    <td>90.29</td>
+                    <td>88.86</td>
+                    <td>99.33</td>
+                    <td>93.33</td>
+                    <td>88.67</td>
+                    <td>86.67</td>
+                    <td>87.18</td>
+                  </tr>
+                  <tr>
+                    <td>GPT-4o</td>
+                    <td>-</td>
+                    <td><strong>95.50</strong></td>
+                    <td><u>85.25</u></td>
+                    <td><strong>62.75</strong></td>
+                    <td><strong>53.25</strong></td>
+                    <td><strong>95.43</strong></td>
+                    <td><strong>78.29</strong></td>
+                    <td><strong>68.00</strong></td>
+                    <td><strong>53.14</strong></td>
+                    <td>91.33</td>
+                    <td>83.67</td>
+                    <td><strong>64.33</strong></td>
+                    <td><strong>50.33</strong></td>
+                    <td><strong>52.24</strong></td>
+                  </tr>
+                  <tr class="is-selected-row">
+                    <td colspan="15"><strong>Open-Source MLLMs</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Qwen3-VL-Instruct</td>
+                    <td>4B</td>
+                    <td>86.75</td>
+                    <td>82.75</td>
+                    <td>58.00</td>
+                    <td>43.25</td>
+                    <td>90.57</td>
+                    <td>70.86</td>
+                    <td>60.00</td>
+                    <td>41.14</td>
+                    <td>90.33</td>
+                    <td>82.67</td>
+                    <td>56.67</td>
+                    <td>39.33</td>
+                    <td>41.24</td>
+                  </tr>
+                  <tr>
+                    <td>Qwen3-VL-Instruct</td>
+                    <td>8B</td>
+                    <td>93.50</td>
+                    <td><strong>89.50</strong></td>
+                    <td>59.50</td>
+                    <td><u>50.75</u></td>
+                    <td>91.71</td>
+                    <td><u>73.43</u></td>
+                    <td><u>63.43</u></td>
+                    <td><u>44.00</u></td>
+                    <td><u>94.33</u></td>
+                    <td>84.67</td>
+                    <td>60.00</td>
+                    <td><u>48.00</u></td>
+                    <td><u>47.58</u></td>
+                  </tr>
+                  <tr>
+                    <td>LLaVA-1.6</td>
+                    <td>7B</td>
+                    <td>81.75</td>
+                    <td>58.00</td>
+                    <td>40.25</td>
+                    <td>18.75</td>
+                    <td>79.14</td>
+                    <td>36.86</td>
+                    <td>33.14</td>
+                    <td>9.43</td>
+                    <td>92.00</td>
+                    <td>58.00</td>
+                    <td>19.33</td>
+                    <td>12.00</td>
+                    <td>13.39</td>
+                  </tr>
+                  <tr>
+                    <td>LLaVA-1.6</td>
+                    <td>13B</td>
+                    <td>84.75</td>
+                    <td>79.00</td>
+                    <td>55.00</td>
+                    <td>39.50</td>
+                    <td>84.86</td>
+                    <td>55.14</td>
+                    <td>50.57</td>
+                    <td>26.29</td>
+                    <td><u>94.33</u></td>
+                    <td>77.33</td>
+                    <td>29.00</td>
+                    <td>21.33</td>
+                    <td>29.04</td>
+                  </tr>
+                  <tr>
+                    <td>Deepseek-VL2-tiny</td>
+                    <td>MoE 1B/3B</td>
+                    <td>88.25</td>
+                    <td>62.25</td>
+                    <td>49.75</td>
+                    <td>29.25</td>
+                    <td>89.71</td>
+                    <td>45.14</td>
+                    <td>41.14</td>
+                    <td>19.71</td>
+                    <td>93.33</td>
+                    <td>65.33</td>
+                    <td>29.00</td>
+                    <td>19.00</td>
+                    <td>22.65</td>
+                  </tr>
+                  <tr>
+                    <td>Deepseek-VL2</td>
+                    <td>MoE 4.5B/27B</td>
+                    <td><u>93.75</u></td>
+                    <td>83.00</td>
+                    <td>60.75</td>
+                    <td>49.50</td>
+                    <td><u>95.14</u></td>
+                    <td>58.00</td>
+                    <td>38.00</td>
+                    <td>23.71</td>
+                    <td><strong>96.33</strong></td>
+                    <td>81.33</td>
+                    <td>46.00</td>
+                    <td>36.67</td>
+                    <td>36.63</td>
+                  </tr>
+                  <tr>
+                    <td>Gemma3</td>
+                    <td>4B</td>
+                    <td>76.50</td>
+                    <td>72.00</td>
+                    <td>49.75</td>
+                    <td>30.75</td>
+                    <td>68.86</td>
+                    <td>62.86</td>
+                    <td><strong>68.00</strong></td>
+                    <td>29.14</td>
+                    <td>87.00</td>
+                    <td>76.00</td>
+                    <td>51.00</td>
+                    <td>36.00</td>
+                    <td>31.96</td>
+                  </tr>
+                  <tr>
+                    <td>Gemma3</td>
+                    <td>12B</td>
+                    <td>87.50</td>
+                    <td><u>85.25</u></td>
+                    <td>60.50</td>
+                    <td>47.50</td>
+                    <td>82.86</td>
+                    <td>70.29</td>
+                    <td><strong>68.00</strong></td>
+                    <td>38.86</td>
+                    <td>90.67</td>
+                    <td><strong>86.33</strong></td>
+                    <td>58.00</td>
+                    <td>46.33</td>
+                    <td>44.23</td>
+                  </tr>
+                  <tr>
+                    <td>InternVL3.5</td>
+                    <td>4B</td>
+                    <td>82.50</td>
+                    <td>83.75</td>
+                    <td>58.50</td>
+                    <td>42.00</td>
+                    <td>82.86</td>
+                    <td>64.57</td>
+                    <td>40.00</td>
+                    <td>23.43</td>
+                    <td>91.00</td>
+                    <td>81.67</td>
+                    <td><u>60.67</u></td>
+                    <td>47.67</td>
+                    <td>37.70</td>
+                  </tr>
+                  <tr>
+                    <td>InternVL3.5</td>
+                    <td>8B</td>
+                    <td>82.00</td>
+                    <td><u>85.25</u></td>
+                    <td>55.75</td>
+                    <td>41.75</td>
+                    <td>84.00</td>
+                    <td>68.00</td>
+                    <td>60.57</td>
+                    <td>36.29</td>
+                    <td>86.00</td>
+                    <td>83.67</td>
+                    <td>55.67</td>
+                    <td>42.00</td>
+                    <td>40.01</td>
+                  </tr>
+                  <tr>
+                    <td>Phi-4-Multimodal-Instruct</td>
+                    <td>6B</td>
+                    <td>90.25</td>
+                    <td>56.50</td>
+                    <td>42.75</td>
+                    <td>32.25</td>
+                    <td>90.29</td>
+                    <td>42.57</td>
+                    <td>23.14</td>
+                    <td>15.14</td>
+                    <td>90.00</td>
+                    <td><u>85.00</u></td>
+                    <td>45.33</td>
+                    <td>33.67</td>
+                    <td>27.02</td>
+                  </tr>
+                  <tr>
+                    <td>Phi-3.5-Vison-Instruct</td>
+                    <td>4B</td>
+                    <td>84.25</td>
+                    <td>83.25</td>
+                    <td><u>61.25</u></td>
+                    <td>44.75</td>
+                    <td>88.29</td>
+                    <td>61.14</td>
+                    <td>53.43</td>
+                    <td>33.14</td>
+                    <td>91.33</td>
+                    <td>82.00</td>
+                    <td>54.33</td>
+                    <td>41.33</td>
+                    <td>39.74</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="columns is-centered" style="margin-top: 3rem;">
+        <div class="column is-full-width">
+          <div style="max-width: 800px; margin: 0 auto;">
+            <h3 class="title is-3 has-text-left">Context Mode Analysis</h3>
+            <div class="content has-text-centered is-size-5">
+              <div class="table-container" style="display: flex; justify-content: center;">
+                <table class="table is-striped is-hoverable is-fullwidth" style="max-width: 800px;">
+                <thead>
+                  <tr>
+                    <th rowspan="2" style="vertical-align: middle;"><strong>Model</strong></th>
+                    <th rowspan="2" style="vertical-align: middle;"><strong>Task</strong></th>
+                    <th colspan="4"><strong>Accuracy</strong></th>
+                    <th rowspan="2" style="vertical-align: middle;"><em><strong>Score</strong></em></th>
+                  </tr>
+                  <tr>
+                    <th><strong><em>Acc<sub>perc</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>bridge</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>conn</sub></em></strong></th>
+                    <th><strong><em>Acc<sub>full</sub></em></strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- GPT-4o -->
+                  <tr class="model-group-1 base-row">
+                    <td rowspan="3" style="vertical-align: middle;">GPT-4o (Base)</td>
+                    <td>Impl.</td>
+                    <td>95.50</td>
+                    <td>85.25</td>
+                    <td>62.75</td>
+                    <td>53.25</td>
+                    <td rowspan="3" style="vertical-align: middle;">52.24</td>
+                  </tr>
+                  <tr class="model-group-1 base-row">
+                    <td>Aesth.</td>
+                    <td>95.43</td>
+                    <td>78.29</td>
+                    <td>68.00</td>
+                    <td>53.14</td>
+                  </tr>
+                  <tr class="model-group-1 base-row">
+                    <td>Affect.</td>
+                    <td>91.33</td>
+                    <td>83.67</td>
+                    <td>64.33</td>
+                    <td>50.33</td>
+                  </tr>
+                  <tr class="model-group-1 context-row" style="border-top: 2px solid #dbdbdb;">
+                    <td rowspan="3" style="vertical-align: middle;">GPT-4o (Context)</td>
+                    <td>Impl.</td>
+                    <td>95.50</td>
+                    <td>89.75</td>
+                    <td>76.50</td>
+                    <td>65.00</td>
+                    <td rowspan="3" style="vertical-align: middle;"><strong>68.18 (+15.94)</strong></td>
+                  </tr>
+                  <tr class="model-group-1 context-row">
+                    <td>Aesth.</td>
+                    <td>95.43</td>
+                    <td>82.29</td>
+                    <td>87.71</td>
+                    <td>72.86</td>
+                  </tr>
+                  <tr class="model-group-1 context-row">
+                    <td>Affect.</td>
+                    <td>91.33</td>
+                    <td>86.00</td>
+                    <td>80.67</td>
+                    <td>66.67</td>
+                  </tr>
 
-    <!-- End of Statcounter Code -->
+                  <!-- Qwen3-VL-8B -->
+                  <tr class="model-group-2 base-row" style="border-top: 2px solid #dbdbdb;">
+                    <td rowspan="3" style="vertical-align: middle;">Qwen3-VL-8B (Base)</td>
+                    <td>Impl.</td>
+                    <td>93.50</td>
+                    <td>89.50</td>
+                    <td>59.50</td>
+                    <td>50.75</td>
+                    <td rowspan="3" style="vertical-align: middle;">47.58</td>
+                  </tr>
+                  <tr class="model-group-2 base-row">
+                    <td>Aesth.</td>
+                    <td>91.71</td>
+                    <td>73.43</td>
+                    <td>63.43</td>
+                    <td>44.00</td>
+                  </tr>
+                  <tr class="model-group-2 base-row">
+                    <td>Affect.</td>
+                    <td>94.33</td>
+                    <td>84.67</td>
+                    <td>60.00</td>
+                    <td>48.00</td>
+                  </tr>
+                  <tr class="model-group-2 context-row" style="border-top: 2px solid #dbdbdb;">
+                    <td rowspan="3" style="vertical-align: middle;">Qwen3-VL-8B (Context)</td>
+                    <td>Impl.</td>
+                    <td>93.50</td>
+                    <td>90.00</td>
+                    <td>74.75</td>
+                    <td>62.75</td>
+                    <td rowspan="3" style="vertical-align: middle;"><strong>62.28 (+14.70)</strong></td>
+                  </tr>
+                  <tr class="model-group-2 context-row">
+                    <td>Aesth.</td>
+                    <td>91.71</td>
+                    <td>74.00</td>
+                    <td>82.57</td>
+                    <td>59.43</td>
+                  </tr>
+                  <tr class="model-group-2 context-row">
+                    <td>Affect.</td>
+                    <td>94.33</td>
+                    <td>89.00</td>
+                    <td>76.00</td>
+                    <td>64.67</td>
+                  </tr>
 
-  </body>
-  </html>
+                  <!-- Gemma3-4B -->
+                  <tr class="model-group-1 base-row" style="border-top: 2px solid #dbdbdb;">
+                    <td rowspan="3" style="vertical-align: middle;">Gemma3-4B (Base)</td>
+                    <td>Impl.</td>
+                    <td>76.50</td>
+                    <td>72.00</td>
+                    <td>49.75</td>
+                    <td>30.75</td>
+                    <td rowspan="3" style="vertical-align: middle;">31.96</td>
+                  </tr>
+                  <tr class="model-group-1 base-row">
+                    <td>Aesth.</td>
+                    <td>68.86</td>
+                    <td>62.86</td>
+                    <td>68.00</td>
+                    <td>29.14</td>
+                  </tr>
+                  <tr class="model-group-1 base-row">
+                    <td>Affect.</td>
+                    <td>87.00</td>
+                    <td>76.00</td>
+                    <td>51.00</td>
+                    <td>36.00</td>
+                  </tr>
+                  <tr class="model-group-1 context-row" style="border-top: 2px solid #dbdbdb;">
+                    <td rowspan="3" style="vertical-align: middle;">Gemma3-4B (Context)</td>
+                    <td>Impl.</td>
+                    <td>76.50</td>
+                    <td>78.25</td>
+                    <td>63.50</td>
+                    <td>40.75</td>
+                    <td rowspan="3" style="vertical-align: middle;"><strong>36.39 (+4.43)</strong></td>
+                  </tr>
+                  <tr class="model-group-1 context-row">
+                    <td>Aesth.</td>
+                    <td>68.86</td>
+                    <td>65.14</td>
+                    <td>82.57</td>
+                    <td>35.43</td>
+                  </tr>
+                  <tr class="model-group-1 context-row">
+                    <td>Affect.</td>
+                    <td>87.00</td>
+                    <td>75.00</td>
+                    <td>50.00</td>
+                    <td>33.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="columns is-centered" style="margin-top: 3rem;">
+        <div class="column is-full-width">
+          <div style="max-width: 1300px; margin: 0 auto;">
+            <h3 class="title is-3 has-text-left">Key Findings from HVCU-Bench Evaluation</h3>
+            <div class="content has-text-justified is-size-5">
+              
+              <!-- Key Findings -->
+              <div class="columns is-multiline" style="margin: 0;">
+                <div class="column is-6" style="padding: 0.5rem;">
+                  <div class="box" style="height: 100%; padding: 1rem; margin: 0;">
+                    <h5 class="title is-5 has-text-primary">🔍 Significant Gap Between Humans and MLLMs</h5>
+                    <p style="font-size: 0.9em; line-height: 1.4;">Humans nearly saturate all HVCU-Bench levels across all tasks, achieving an overall score of <strong>87.18%</strong> with consistently strong performance at both Bridge and Connotation levels. In contrast, GPT-4o demonstrates near-human performance at Perception (-3.75%) but exhibits a substantial disparity at Connotation (-23.75%), resulting in an overall gap of <strong>-34.94%</strong>. This reveals that current MLLMs still lack a stable semantic bridge from concrete evidence to abstract meaning.</p>
+                  </div>
+                </div>
+              
+                <div class="column is-6" style="padding: 0.5rem;">
+                  <div class="box" style="height: 100%; padding: 1rem; margin: 0;">
+                    <h5 class="title is-5 has-text-primary">📉 Universal Performance Degradation</h5>
+                    <p style="font-size: 0.9em; line-height: 1.4;">Most models exhibit a sharp, cascading decline when moving from Perception to Connotation. While nearly all achieve high accuracy at Perception, their performance systematically deteriorates at Bridge and typically drops precipitously at Connotation. On Implication Understanding, GPT-4o experiences a degradation of <strong>-32.75%</strong>, Qwen3-VL-8B-Instruct degrades by <strong>-34.00%</strong>, and Gemma3-12B suffers a <strong>-27.00%</strong> decline, validating that a critical weakness exists in bridging perception to abstract reasoning.</p>
+                  </div>
+                </div>
+              
+                <div class="column is-6" style="padding: 0.5rem;">
+                  <div class="box" style="height: 100%; padding: 1rem; margin: 0;">
+                    <h5 class="title is-5 has-text-primary">🔗 Hierarchical Context Brings Substantial Gains</h5>
+                    <p style="font-size: 0.9em; line-height: 1.4;">Providing hierarchical context yields substantial performance gains across all evaluated models. GPT-4o demonstrates an overall improvement of <strong>+15.94%</strong>, while Qwen3-VL-8B-Instruct achieves a gain of <strong>+14.70%</strong>. This demonstrates that lower levels provide critical grounding for higher-level connotative reasoning, confirming that connotative inference fundamentally relies on a coherent chain of reasoning from perception through semantic bridging to abstract interpretation.</p>
+                  </div>
+                </div>
+              
+                <div class="column is-6" style="padding: 0.5rem;">
+                  <div class="box" style="height: 100%; padding: 1rem; margin: 0;">
+                    <h5 class="title is-5 has-text-primary">📊 Scale Alone Cannot Resolve the Challenge</h5>
+                    <p style="font-size: 0.9em; line-height: 1.4;">While increasing model scale generally improves performance, it does not resolve the fundamental challenges of hierarchical visual connotation understanding. Larger models possess stronger foundational capabilities but still lack the specialized knowledge required for connotative reasoning, suggesting that the challenge transcends mere model scale and points to a deeper gap in current multimodal understanding paradigms.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: Hierarchical Data Generation Pipeline -->
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-2 has-text-left">Hierarchical Data Generation Pipeline</h2>
+          
+          <!-- 问题发现 -->
+          <div class="content has-text-justified is-size-5" style="margin-top: 2rem;">
+            <p>
+              Based on the above analysis, we observe that current MLLMs exhibit significant performance degradation when moving from perception to connotation, 
+              with a critical weakness in bridging concrete evidence to abstract meaning. To address this fundamental gap, we propose a novel data generation pipeline 
+              to create hierarchical training data for fine-tuning models to enhance VCU-Bridge capabilities.
+            </p>
+          </div>
+
+          <!-- MCTS数据生成Pipeline -->
+          <div class="content has-text-justified is-size-5" style="margin-top: 2rem;">
+            <p>
+              To enhance the hierarchical reasoning capabilities of MLLMs, we propose a novel data generation pipeline for instruction tuning. 
+              In contrast to the benchmark's top-down sequential generation of individual samples, our training data is constructed through 
+              a large-scale bottom-up search using <strong>Monte Carlo Tree Search (MCTS)</strong> to explore a tree of candidate paths, 
+              ultimately selecting diverse high-quality chains for training.
+            </p>
+            <div class="content has-text-centered is-size-5 figure-caption" style="margin-top: 2rem;">
+              <img src="./static/images/pipeline.jpg" alt="Pipeline" width="60%" />
+              <p><strong>Overview of our hierarchical data generation pipeline.</strong> An MCTS-driven approach for generating high-quality 
+                hierarchical training data. The pipeline iteratively constructs a reasoning tree through three phases: Selection (based on UCB strategy), 
+                Expansion & Evaluation (generating and assessing candidate children), and Backpropagation (updating statistics for ancestors). 
+                After MCTS convergence, top-K highest-rated complete reasoning paths are extracted for instruction tuning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10: Effectiveness of Hierarchical Data Generation -->
+  <section class="section hero is-light">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-2 has-text-left">Effectiveness of Hierarchical Data Generation</h2>
+          
+          <!-- Improvements and Generalization -->
+          <div class="content has-text-justified is-size-5" style="margin-top: 2rem;">
+            <!-- <h3 class="title is-4 has-text-left">Improvements and Generalization</h3> -->
+            <p>
+              To validate the effectiveness of our data generation pipeline, we instruction-tune Qwen3-VL-4B-Instruct on approximately 10k hierarchical QA pairs 
+              generated from 1k images, yielding <strong>Qwen3-VL-4B-Bridge</strong>. Qwen3-VL-4B-Bridge exhibits consistent improvements across all three tasks of HVCU-Bench. 
+              Although training supervision is provided exclusively for Implication Understanding, Qwen3-VL-4B-Bridge achieves substantial gains not only on this task 
+              (+6.75% in <em>Acc<sub>full</sub></em>) but also on Aesthetic Appreciation (+5.43%) and Affective Reasoning (+6.34%), where no direct training signals are given. 
+              This cross-task transfer strongly indicates that Qwen3-VL-4B-Bridge has learned to establish generalizable semantic connections, linking perceptual evidence 
+              to abstract connotations through intermediate factual reasoning, rather than memorizing task-specific templates. The overall HVCU-Bench score demonstrates 
+              an improvement of <strong>+6.17%</strong>, further confirming that bottom-up data generation with validation effectively teaches structured visual reasoning.
+            </p>
+            <p style="margin-top: 1rem;">
+              To assess whether these hierarchical reasoning improvements generalize beyond HVCU-Bench, we evaluate Qwen3-VL-4B-Bridge on four established general benchmarks: 
+              MMBench, HallusionBench, MMStar, and MMMU. Qwen3-VL-4B-Bridge demonstrates strong generalization, achieving substantial improvements on MMStar (<strong>+7.26%</strong>) 
+              and MMMU (<strong>+3.22%</strong>) while maintaining competitive performance on MMBench and HallusionBench, even though it was trained exclusively on 
+              HVCU-Bench's connotation-focused data. This cross-benchmark transfer demonstrates that grounding abstract interpretations in perceptual evidence through 
+              a structured semantic bridge enhances reasoning skills, benefiting tasks beyond connotative understanding.
+            </p>
+            <div class="content has-text-centered is-size-5 figure-caption" style="margin-top: 2rem;">
+              <img src="./static/images/model_performance_chart.jpg" alt="Model Performance Chart" width="80%" />
+              <p><strong>Performance improvements after instruction tuning.</strong> Qwen3-VL-4B-Bridge achieves substantial improvements on HVCU-Bench 
+                while maintaining strong performance on diverse general benchmarks, demonstrating the effectiveness of hierarchical training data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom: 0;">
+    <div class="container">
+      <div class="columns is-centered m-6">
+        <div class="column has-text-centered content" style="max-width: 85%;">
+          <h2 class="title is-2">HVCU-Bench Samples</h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <!-- Case 1: Implication Understanding - Metaphor -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Implication Understanding (Metaphor)</strong></p>
+                  <img src="./static/images/metaphor.jpg" alt="Metaphor" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What is the primary method of communication used by the characters in the comic
+                    strip?<br>
+                    A. Characters speak dialogue shown in speech bubbles.<br>
+                    B. They use only non-verbal actions like gestures and facial expressions.<br>
+                    C. Their communication is shown through thought bubbles above their heads.<br>
+                    D. A narrator provides descriptions of their thoughts and actions.<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> Based on the sequence of events in the comic, what is the most direct reason the
+                    yellow horse decides to become taller?<br>
+                    A. To gain a better vantage point for observing its surroundings.<br>
+                    B. To explore its own potential for extreme physical transformation.<br>
+                    C. To satisfy the blue horse's stated dating preference for tall individuals.<br>
+                    D. To develop a more imposing physique for self-defense.<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> What could the abrupt transformation of the shorter character into a giraffe in
+                    the final panel of the comic strip symbolize in terms of social commentary?<br>
+                    A. It symbolizes the importance of personal growth and improvement.<br>
+                    B. It represents a critique of the quest for physical perfection and the extremes to which people
+                    will go to achieve it.<br>
+                    C. The transformation illustrates the beauty of embracing one's unique nature rather than
+                    conforming.<br>
+                    D. The character symbolizes the absurdity of changing oneself to meet others' arbitrary
+                    standards.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 2: Implication Understanding - Contrast -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Implication Understanding (Contrast)</strong></p>
+                  <img src="./static/images/contrast.jpg" alt="Contrast" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What object is clearly visible on the head of one of the horse-like creatures in
+                    the final panel of the comic strip?<br>
+                    A. A flower.<br>
+                    B. A small hat.<br>
+                    C. A unicorn horn.<br>
+                    D. An ear of corn.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> What is the primary misunderstanding that occurs between the child and the
+                    "unicorn" character in the initial panels of the comic strip?<br>
+                    A. The child is referring to a different animal with an actual corn "horn," but the "unicorn"
+                    character believes the child is misidentifying or insulting its own mythical horn.<br>
+                    B. The child simply mispronounced the word "unicorn," leading the creature to correct them
+                    indignantly.<br>
+                    C. The "unicorn" character mistook the child's comment as a criticism of its horn's appearance,
+                    thinking it resembled corn.<br>
+                    D. The "unicorn" character was primarily offended by the child's informal language, rather than the
+                    specific word "unihorn."<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> What is the underlying message conveyed through the humorous twist in the final
+                    panel of the comic strip, where an ear of corn is revealed instead of a traditional unicorn
+                    horn?<br>
+                    A. The humor emphasizes our inability to recognize the ordinary when we are obsessed with the
+                    extraordinary.<br>
+                    B. This humorously indicates that our expectations from mythical tales often overlook the charm and
+                    surprise found in nature's simplicities.<br>
+                    C. It mocks the convention of seeking deep, hidden meanings in every aspect of art by providing an
+                    unexpectedly literal twist.<br>
+                    D. It illustrates the importance of deeper investigation and not taking things at face value.<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 3: Implication Understanding - Exaggeration -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Implication Understanding (Exaggeration)</strong></p>
+                  <img src="./static/images/exaggeration.jpg" alt="Exaggeration" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What specific item is the bald character asked about in the first panel, and is
+                    visibly holding?<br>
+                    A. An extra set of headphones.<br>
+                    B. A mobile phone.<br>
+                    C. A book.<br>
+                    D. A pair of sunglasses.<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> In the comic, what specific action by the newly arrived character immediately
+                    explains why the bald character says "Speak of the Devil"?<br>
+                    A. He is holding a smartphone in a public space.<br>
+                    B. He is talking very loudly on his phone, disturbing the quiet environment.<br>
+                    C. He is about to ask the bald character for a set of headphones.<br>
+                    D. He appears to be ignoring the presence of other passengers.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> What does the exaggerated action in the last panel symbolize?<br>
+                    A. An overblown representation of how technology can suffocate personal freedoms.<br>
+                    B. The frustrations of public transit riders with loud music.<br>
+                    C. The extreme discomfort caused by modern technology's invasion into personal space.<br>
+                    D. A visual hyperbole of the silent plea for etiquette and respect in shared environments.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 4: Implication Understanding - Dislocation -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Implication Understanding (Dislocation)</strong></p>
+                  <img src="./static/images/dislocation.jpg" alt="Dislocation" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> How many distinct panels or frames are present in the image?<br>
+                    A. One.<br>
+                    B. Four.<br>
+                    C. Two.<br>
+                    D. Three.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> How does the third panel visually recontextualize the seemingly dire
+                    situation?<br>
+                    A. Shows consistent water level and horizon line.<br>
+                    B. Shows protagonist sitting with crossed arms.<br>
+                    C. Reveals shallow depth of the water, proving the initial panic was an overreaction.<br>
+                    D. Shifts to a wider shot including surroundings.<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> What hidden meaning might the comic be conveying through the exaggerated
+                    expressions followed by the reveal?<br>
+                    A. It satirizes people's tendency to overreact to non-dangerous situations.<br>
+                    B. It shows preparation for worst-case scenarios.<br>
+                    C. It illustrates emotional oscillation between terror and relief.<br>
+                    D. It mocks sensationalizing everyday events.<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 5: Implication Understanding - Symbolism -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Implication Understanding (Symbolism)</strong></p>
+                  <img src="./static/images/symbolism.jpg" alt="Symbolism" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What animals are depicted interacting in the comic panels?<br>
+                    A. Two dogs.<br>
+                    B. A dog and a cat.<br>
+                    C. A dog and a squirrel.<br>
+                    D. Two cats.<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> What is the source of the humor in the final panel?<br>
+                    A. The brown dog is actually a human in disguise and speaks perfect English.<br>
+                    B. The brown dog claims it cannot "speak" the specific sound ("ARF") used by the grey dog, treating
+                    a simple bark as a foreign language.<br>
+                    C. The grey dog is mute and cannot respond to the brown dog's questions.<br>
+                    D. The human owner misunderstands the barking as a conversation about food.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> What social phenomenon is implied by the "language barrier" between the two
+                    dogs?<br>
+                    A. The biological inability of different species to communicate.<br>
+                    B. The tendency for people to talk past each other when angry.<br>
+                    C. Even within similar groups, arbitrary linguistic or cultural differences can create barriers to
+                    communication.<br>
+                    D. Pets often mimic the behavior and language of their owners.<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 6: Affective Reasoning - Fear -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Affective Reasoning (Fear)</strong></p>
+                  <img src="./static/images/fear.png" alt="Fear" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What object is the person in the image holding?<br>
+                    A. A smartphone.<br>
+                    B. A hand mirror.<br>
+                    C. A magnifying glass.<br>
+                    D. A framed photograph.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> What is the primary emotional dynamic created by the interplay between the
+                    woman's facial expression and the visible injuries in the mirror?<br>
+                    A. The woman's look of surprise indicates she is seeing the injury for the first time, which makes
+                    the viewer feel like a witness to a tragic discovery.<br>
+                    B. The woman's expression of horror validates and amplifies the viewer's reaction to the injury,
+                    creating a feedback loop of shared shock and disgust.<br>
+                    C. The gruesome injuries are the sole source of the viewer's disgust, and the woman's expression
+                    simply serves to confirm the reality of the situation.<br>
+                    D. The woman's horrified expression creates empathy, which conflicts with the feeling of aversion
+                    caused by the injury, resulting in a confusing mix of pity and disgust.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> You think the emotional transfer of this picture is perceived as either direct or
+                    indirect? Please explain your perspective.<br>
+                    A. The emotional conveyance is direct, but it primarily communicates feelings of surprise and
+                    sadness...<br>
+                    B. The emotional transfer is indirect as it functions on a symbolic level...<br>
+                    C. The emotional conveyance of this image is direct. It showcases a close-up of the character's face
+                    through a hand mirror, particularly highlighting the scar on the face...<br>
+                    D. The emotional transfer is indirect because it relies on the viewer to construct a
+                    narrative...<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 7: Affective Reasoning - Joy -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Affective Reasoning (Joy)</strong></p>
+                  <img src="./static/images/joy.png" alt="Joy" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What prominent, colorful object is being held up by the people amidst the
+                    splashing water?<br>
+                    A. A large, open umbrella.<br>
+                    B. A large rainbow flag.<br>
+                    C. A multi-colored beach towel.<br>
+                    D. A colorful plastic tarp.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> Why is the atmosphere in the image best characterized as celebratory, rather than
+                    simply playful or disorganized?<br>
+                    A. The participants' uninhibited splashing and visible smiles are the primary drivers of the mood,
+                    indicating a scene of spontaneous, individual fun.<br>
+                    B. The combination of a prominent flag and the occupation of a public fountain suggests a
+                    demonstration, where the energy is more disruptive than joyful.<br>
+                    C. The large rainbow flag provides a shared symbol that gives the energetic activity in the water a
+                    sense of collective purpose and joyous expression.<br>
+                    D. The energy stems from the refreshing relief the fountain provides on what appears to be a hot
+                    day, making the activity a practical response to the environment.<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> Which specific elements in the image (such as color, setting, people, etc.)
+                    triggered your several main emotional responses? please provide a detailed explanation.<br>
+                    A. My emotional response is driven by the overcast sky and the muted color palette...<br>
+                    B. The vibrant rainbow flag and the splashing water in the image evoke a strong emotional response.
+                    The rainbow-colored flag adds vividness and liveliness to the scene...<br>
+                    C. The image evokes a sense of anger and frustration due to the apparent disorder...<br>
+                    D. The primary emotional triggers are the dense crowd and the architectural style of the background
+                    buildings...<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 8: Affective Reasoning - Wonder -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Affective Reasoning (Wonder)</strong></p>
+                  <img src="./static/images/wonder.png" alt="Wonder" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What kind of animal is sitting on the rock in the center of the image, looking up
+                    towards the sky?<br>
+                    A. A wolf.<br>
+                    B. A fox.<br>
+                    C. A dog.<br>
+                    D. A cat.<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> How does the use of light in the image primarily establish the relationship
+                    between the earthly foreground and the fantastical moon?<br>
+                    A. The diffused glow illuminating the mist and mountains establishes a realistic nocturnal setting,
+                    creating a dominant atmosphere of quiet serenity and peace.<br>
+                    B. The light selectively leaves the abandoned cabin in deep shadow, making its decay the focal point
+                    and evoking a primary sense of melancholy and loss.<br>
+                    C. By casting a direct, focused beam from the moon to the dog, the light creates a narrative link
+                    that transforms physical distance into a moment of connection and wonder.<br>
+                    D. The sharp contrast between the dark landscape and the bright moon serves to isolate the two
+                    realms, emphasizing a feeling of insurmountable distance and loneliness.<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> Which specific elements (for example, colors, scenes, people, etc.) in the image
+                    do you find to evoke the several main emotional reactions from you? please provide a detailed
+                    explanation.<br>
+                    A. Several elements in this image evoke strong emotional responses. First, the colors: the dark
+                    tones in the scene contrast sharply with the soft moonlight, creating a mysterious and serene
+                    atmosphere...<br>
+                    B. The image primarily evokes a sense of fear and anxiety. The dark, ominous tones combined with the
+                    dilapidated, abandoned cabin suggest a scene of horror or danger...<br>
+                    C. This image communicates overwhelming sadness and melancholy. The abandoned cabin is a clear
+                    symbol of loss and forgotten times, evoking a deep sense of grief...<br>
+                    D. The image evokes a sense of vibrant energy and excitement. The sharp contrast between the light
+                    and dark areas creates a dynamic, high-energy feeling...<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 9: Affective Reasoning - Anger -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Affective Reasoning (Anger)</strong></p>
+                  <img src="./static/images/anger.png" alt="Anger" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What primary emotion is the woman's facial expression conveying?<br>
+                    A. Sadness.<br>
+                    B. Anger.<br>
+                    C. Surprise.<br>
+                    D. Joy.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> How does the background interact with the woman's expression?<br>
+                    A. The intense red of the background amplifies the raw anger in her expression, creating a more
+                    powerful and overwhelming feeling of rage.<br>
+                    B. The red background is the primary source of aggression, causing the woman's expression to be
+                    interpreted as a reaction of fear or feeling cornered.<br>
+                    C. The flat, theatrical quality of the red background contrasts with the realistic expression,
+                    creating an emotional ambiguity between genuine rage and a staged performance.<br>
+                    D. The chaotic details in the red background, like graffiti and decay, suggest a specific narrative
+                    cause for her anger, making it feel targeted at her surroundings.<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> What elements create the emotional responses you feel?<br>
+                    A. The image primarily conveys a profound sense of sadness and despair. The character's wide-open
+                    mouth is not a scream of anger but a cry of anguish and loss...<br>
+                    B. The scene appears to be one of theatrical performance, which inspires a sense of awe and
+                    surprise...<br>
+                    C. The primary emotional trigger is the lack of a detailed environment, focusing solely on the
+                    character against a plain background...<br>
+                    D. The intense red background and the expression of the character in the image evoke the strongest
+                    emotional reaction in me. Red is often associated with passion and power, and here it may symbolize
+                    anger or intense emotion...<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 10: Affective Reasoning - Affection -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Affective Reasoning (Affection)</strong></p>
+                  <img src="./static/images/affection.png" alt="Affection" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What three main subjects are gathered at the table?<br>
+                    A. A man and a young girl.<br>
+                    B. A man, a young girl, and a dog.<br>
+                    C. A man, a young girl, and a cat.<br>
+                    D. A woman, a young boy, and a dog.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> How do their actions and expressions establish the emotional tone?<br>
+                    A. The father's expression of gentle nostalgia as he looks down suggests a bittersweet moment, while
+                    the daughter's wide-eyed look shows her concern for his feelings.<br>
+                    B. The father's gentle gaze towards the girl, combined with her look of happy surprise and the
+                    presence of a birthday cake, creates a shared moment of familial joy.<br>
+                    C. The scene's happiness stems primarily from the dog, which is being presented as a gift, causing
+                    the daughter's excitement and the father's look of satisfaction.<br>
+                    D. The daughter's expression of eager anticipation is directed at the cake, while the father's
+                    observant look suggests he is waiting for her reaction, creating a sense of suspense.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> Describe the emotional content (valence, arousal, dominance).<br>
+                    A. The picture depicts a father and daughter in a moment of disagreement...<br>
+                    B. The picture depicts a scene where the father and the family's little dog are celebrating the
+                    daughter's birthday together. The father, wearing glasses, looks at his daughter with a kind
+                    expression, holding the little dog in his hands...<br>
+                    C. The image portrays a family preparing for a pet competition...<br>
+                    D. This is a scene of a family saying goodbye...<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 11: Affective Reasoning - Sadness -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Affective Reasoning (Sadness)</strong></p>
+                  <img src="./static/images/sadness.png" alt="Sadness" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What type of animal is the main subject of this close-up photograph?<br>
+                    A. A monkey.<br>
+                    B. A cat.<br>
+                    C. A dog.<br>
+                    D. A bear cub.<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> How do the different parts of the pug's facial expression interact to create a
+                    sense of emotional ambiguity?<br>
+                    A. The primary source of ambiguity lies solely within the pug's eyes, which appear both large and
+                    curious due to light reflection while also having a sad, downward-turned shape.<br>
+                    B. The expression is a result of the pug's physical structure; the bared teeth are a common trait of
+                    the breed's underbite and not an emotional sign, while the wide eyes indicate a state of high alert
+                    or fear.<br>
+                    C. The deep wrinkles on the pug's forehead, suggesting worry, conflict with the dramatic,
+                    high-contrast lighting, which gives the image an aggressive and menacing quality.<br>
+                    D. The pug's wide, seemingly sad eyes contrast with its bared teeth, which could be interpreted as
+                    either aggression or a playful smile, creating an uncertain emotional signal.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> When you look at this image, do you feel any conflicting emotions or
+                    uncertainty?<br>
+                    A. Upon viewing the image, there is no sense of emotional conflict. The pug's expression is one of
+                    clear and unambiguous aggression and anger...<br>
+                    B. When viewing this image, one might experience an emotional conflict. The expression of the pug in
+                    the picture appears somewhat melancholic yet with a hint of playfulness...<br>
+                    C. This image presents a straightforward and non-conflicting emotional state of pure
+                    curiosity...<br>
+                    D. There is no emotional uncertainty in this image; it is a clear depiction of physical discomfort
+                    and pain...<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 12: Aesthetic Appreciation - Graphic -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Aesthetic Appreciation (Graphic)</strong></p>
+                  <img src="./static/images/graphic.png" alt="Graphic" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What type of animal is the main subject of this advertisement?<br>
+                    A. A rabbit<br>
+                    B. A hamster<br>
+                    C. A puppy<br>
+                    D. A kitten<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> By comparing the kitten image to the surrounding text and graphics, what is the
+                    primary visual tension or conflict within the ad's composition?<br>
+                    A. The blur on the kitten is a deliberate technique to create depth of field, pushing it into the
+                    background to make the "ADOPT a PET" text the main focus.<br>
+                    B. There is a conflict in balance; the visually heavy kitten on the left competes for attention with
+                    the text block on the right, dividing the viewer's focus.<br>
+                    C. There is a conflict in style; the realistic photograph of the kitten clashes with the flat,
+                    illustrative style of the heart graphics and typography.<br>
+                    D. There is a conflict in sharpness; the kitten, the emotional focus, is blurry and indistinct,
+                    while the text and logos are crisp and clear.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> Does this design have any issues that affect its effectiveness? If so, what are
+                    the main impacts?<br>
+                    A. Yes, the lack of sharpness in the main subject significantly weakens the design's effectiveness.
+                    Even though the text is legible, this visual flaw undermines the emotional connection with the
+                    audience and damages the organization's perceived professionalism.<br>
+                    B. Yes, the inconsistent and overly playful typography creates a sense of disorganization that is
+                    difficult to read quickly...<br>
+                    C. No, the design does not have significant issues; in fact, the soft focus on the subject creates
+                    an artistic, dreamy effect...<br>
+                    D. The design has a minor issue with image clarity, but its impact is minimal...<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 13: Aesthetic Appreciation - Color -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Aesthetic Appreciation (Color)</strong></p>
+                  <img src="./static/images/color.png" alt="Color" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What is the color of the large circular area on the left side of the image where
+                    the text is located?<br>
+                    A. Light Green<br>
+                    B. Light Yellow<br>
+                    C. Light Blue<br>
+                    D. White<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> Why might a potential adopter have difficulty reading the contact information for
+                    the "Claytoni Shelter" in this advertisement?<br>
+                    A. The font size for the contact information is too small compared to the headline, making it the
+                    primary reason it is difficult to read.<br>
+                    B. The white text of the address and phone number has very low color contrast against the light
+                    green background, making it nearly illegible.<br>
+                    C. The circular text box is placed over a visually complex part of the background image, which
+                    interferes with the text.<br>
+                    D. The large word "WAITING" is so visually dominant that it draws the eye away from the contact
+                    details, making them hard to find.<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> Does this design have any issues that affect its effectiveness? If so, what are
+                    the main impacts?<br>
+                    A. No, the design is highly effective and communicates a gentle, caring brand identity...<br>
+                    B. While the text is somewhat faint, the overall minimalist aesthetic is clean, modern, and visually
+                    pleasing...<br>
+                    C. Yes, the design's color choices create significant legibility problems that obscure vital
+                    information. Even if the palette intends to be soft and gentle, this choice severely undermines
+                    communication effectiveness and damages the organization's credibility by appearing
+                    unprofessional.<br>
+                    D. Yes, the design's typography feels dated and generic, which fails to capture attention
+                    effectively...<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 14: Aesthetic Appreciation - Font -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Aesthetic Appreciation (Font)</strong></p>
+                  <img src="./static/images/font.png" alt="Font" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What color is the handwritten text that reads "limited offer"?<br>
+                    A. Beige<br>
+                    B. Black<br>
+                    C. Red<br>
+                    D. White<br>
+                    <strong><em>Answer:</em></strong> C
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> How do the visual characteristics of the "SPRING SALE" text and the "limited
+                    offer" text create different impressions for the viewer?<br>
+                    A. The "SPRING SALE" text is bold to show importance, while the "limited offer" text is red to serve
+                    as a warning to the customer.<br>
+                    B. The "SPRING SALE" text establishes a modern, minimalist theme, while the "limited offer" text
+                    adds a personal, artistic touch.<br>
+                    C. Both text elements are designed primarily to grab attention, using different fonts to distinguish
+                    the main headline from the secondary condition.<br>
+                    D. The "SPRING SALE" text uses an elegant, formal font suggesting high quality, while the "limited
+                    offer" text uses a casual, handwritten font suggesting informal urgency.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> Does this design present any significant issues affecting its overall
+                    effectiveness? If so, what are the primary high-level impacts on communication and brand
+                    perception?<br>
+                    A. The design has a minor issue with the handwritten font feeling slightly out of place, but its
+                    impact is minimal...<br>
+                    B. Yes, the design suffers from an incongruous text element that clashes with the established
+                    sophisticated aesthetic. Even though the urgent message is legible, this stylistic mismatch
+                    undermines the brand's perceived professionalism and creates a visual dissonance that can cheapen
+                    the overall impression.<br>
+                    C. No, the design is highly effective because the mix of formal and informal typography creates a
+                    dynamic contrast...<br>
+                    D. Yes, the placement of the text elements creates a cluttered and unbalanced composition...<br>
+                    <strong><em>Answer:</em></strong> B
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 15: Aesthetic Appreciation - Composition -->
+            <div class="item">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <p><strong>Aesthetic Appreciation (Composition)</strong></p>
+                  <img src="./static/images/composition.png" alt="Composition" width="60%" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="content" style="text-align: left; padding: 0 20px; font-size: 1rem;">
+                  <p><strong>Level 1 -- Perception</strong><br>
+                    <strong><em>Question:</em></strong> What is the primary object that serves as the background for most of the text in
+                    the image?<br>
+                    A. A cutting board<br>
+                    B. A piece of parchment paper<br>
+                    C. A baker's peel<br>
+                    D. A serving platter<br>
+                    <strong><em>Answer:</em></strong> A
+                  </p>
+
+                  <p><strong>Level 2 -- Bridge</strong><br>
+                    <strong><em>Question:</em></strong> How is the quote "A party without cake is just a meeting" spatially organized in
+                    relation to the cutting board illustration?<br>
+                    A. The quote begins inside the top of the cutting board and flows downwards, with only the author's
+                    name appearing outside the board.<br>
+                    B. The entire quote is contained within the boundaries of the cutting board, with the most important
+                    words enlarged for emphasis.<br>
+                    C. The main subjects, "party" and "cake", are positioned outside the board to draw attention, while
+                    the rest of the phrase is inside.<br>
+                    D. The first two words, "A party", are positioned outside the cutting board, while the remainder of
+                    the quote is located inside it.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+
+                  <p><strong>Level 3 -- Connotation</strong><br>
+                    <strong><em>Question:</em></strong> Does this design exhibit any issues that compromise its overall effectiveness? If
+                    so, what are the primary consequences for the viewer's experience and the design's perceived
+                    quality?<br>
+                    A. No, the design does not have significant issues; in fact, its unconventional typography is
+                    effective at capturing attention...<br>
+                    B. While the separation of the first two words is slightly unconventional, it creates a unique
+                    visual entry point into the quote...<br>
+                    C. Yes, the muted, monochromatic color palette makes the design feel dated and unexciting...<br>
+                    D. Yes, the design suffers from disjointed text placement that fragments the central message. Even
+                    if the playful font is appealing, this structural flaw disrupts reading flow and undermines the
+                    design's sense of polish and professionalism.<br>
+                    <strong><em>Answer:</em></strong> D
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="BibTeX" style="padding: 1rem 0;">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-2">BibTeX</h2>
+      <pre><code></code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project
+              page. You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+                target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
