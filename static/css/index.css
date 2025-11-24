@@ -142,7 +142,7 @@ body {
 }
 
 .table thead tr:last-child th {
-  border-bottom: 2px solid #dbdbdb !important;
+  border-bottom: none !important;
 }
 
 .table tbody tr:first-child td[rowspan="3"] {
@@ -170,7 +170,38 @@ body {
 
 /* 确保表格有边框 */
 .table thead {
-  border-bottom: 2px solid #dbdbdb;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table thead tr:first-child th {
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.table thead th.task-group-header {
+  position: relative;
+}
+
+.table thead th.task-group-header::before,
+.table thead th.task-group-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  width: 12px;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+.table thead th.task-group-header::before {
+  left: 0;
+}
+
+.table thead th.task-group-header::after {
+  right: 0;
+}
+
+.table thead th.task-group-header:first-of-type::before,
+.table thead th.task-group-header:last-of-type::after {
+  width: 0;
 }
 
 /* 移除表格数据行的条纹颜色，Base行是白色，Context行是灰色 */
@@ -179,7 +210,7 @@ body {
 }
 
 .is-selected-row {
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
   font-weight: bold;
 }
 
